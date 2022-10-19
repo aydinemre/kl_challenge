@@ -1,7 +1,8 @@
-#include "../src/model.hpp"
-#include "../src/logger.hpp"
+#include "../src/cpp/model.hpp"
+#include "../src/cpp/logger.hpp"
 
-int main() {
+int main()
+{
 
     Model instance;
 
@@ -12,10 +13,10 @@ int main() {
     std::vector<std::string> test_images = {
         "fixtures/image_F1.bmp",
         "fixtures/image_F2.bmp",
-        "fixtures/image_T1.bmp"
-    };
+        "fixtures/image_T1.bmp"};
 
-    for(auto img_path : test_images) {
+    for (auto img_path : test_images)
+    {
         float res = instance.inference(img_path.c_str());
         Logger::info("Genuine score for " + img_path + " is: " + std::to_string(res));
     }

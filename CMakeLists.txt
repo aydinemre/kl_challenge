@@ -68,7 +68,7 @@ find_package(Threads REQUIRED)
 # --------------------------------------------------------------------------------------------------
 
 set(MAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-set(SRC_SDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(SRC_SDK_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/cpp)
 set(TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test)
 set(VENDORS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendors)
 

@@ -10,7 +10,9 @@ This C++ project is organized as follows:
 - `bin` contains some shell scripts to help you build and test the project. Both macOS and linux are supported (Big Sur 11.2.3 and Ubuntu 20.04 have been tested).
 - `build/{OS_NAME}` is the folder in which the project will be built.
 - `cmake` contains a CMake helper file required when building for linux.
-- `src` contains the source code you will work on.
+- `src` contains the source code you will work on. <font color='red'>I added two sub folder to `src` folder.</font>
+  - <font color='red'>`src/cpp` contains c++ codes</font>
+  - <font color='red'>`src/python` contains Python codes</font>
 - `test` contains test code and a fixtures folder where you should place your test images.
 - `vendors` contains external dependencies (opencv2 and tflite) required by the project.
 
@@ -23,6 +25,7 @@ Whenever you find a question, it should be answered in place. All questions are 
 - Prepare your environment with CMake, a C++ 17 compiler and pthread. As far as I can remember, these are the only requirements.
 - You can build the project by running `./bin/build_macos.sh` or `./bin/build_linux.sh`, but it will probably fail. What is the cause?
 - Edit the `src/CMakeLists.txt` - and the `cmake/generate_ar_input_file.cmake` if you are on linux - to fix it.
+- <font color='red'>I modified some paths to adopt new directory structure</font>
 
 ### 2. Understanding Silent-Face-Anti-Spoofing
 
