@@ -30,13 +30,20 @@ Whenever you find a question, it should be answered in place. All questions are 
 ### 2. Understanding Silent-Face-Anti-Spoofing
 
 - You should start from the `test.py` file.
-- Take a look at the networks' architecture. What is the last layer?
-- What preprocessing operations an image undergoes before being inputted to the network?
+- Take a look at the networks' architecture. What is the last layer? 
+  - <font color='red'>Linear(in_features=128, out_features=3, bias=False). One Linear layer which has 128 input feature and 3 output feature</font>
+- What preprocessing operations an image undergoes before being inputted to the network? 
+  - <font color='red'>Checking image width/height ratio. 
+  - Converting array to tensors with using ToTensor() function</font>
 - Does the input image have channel-first or channel-last format?
 - What is the input image colorspace?
+  - <font color='red'>3 - RGB Colorspace</font>
 - How many classes image can be classified into?
+  - <font color='red'>3 classes which are: 2D Fake,Real and 3D Fake <link>https://github.com/minivision-ai/Silent-Face-Anti-Spoofing/issues/46</link> </font>
 - What is the index for the genuine (real face) classification score?
+  - <font color='red'>Index: 1</link> </font>
 - Apart from the anti-spoofing models, does the code use any other ML model?
+  - <font color='red'>Yes it use RetinaFace model to detect face</link> </font>
 
 ### 3. Testing Silent-Face-Anti-Spoofing
 
