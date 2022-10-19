@@ -48,10 +48,22 @@ Whenever you find a question, it should be answered in place. All questions are 
 ### 3. Testing Silent-Face-Anti-Spoofing
 
 - [X] Modify the `test.py` script to only use the `2.7_80x80_MiniFASNetV2.pth` model.
-- Modify the `test.py` script to output only the genuine score.
-- Run the `test.py` script for `image_F1.jpg`, `image_F2.jpg` and `image_T1.jpg` images.
-- What are the genuine scores for each one of them?
-- You will have to reproduce the scores from the previous step later when using TFLite.
+- [X] Modify the `test.py` script to output only the genuine score.
+- [X] Run the `test.py` script for `image_F1.jpg`, `image_F2.jpg` and `image_T1.jpg` images.
+  - ```python src/python/test.py --image_name image_F1.jpg```
+  - ```python src/python/test.py --image_name image_F2.jpg```
+  - ```python src/python/test.py --image_name image_T1.jpg```
+- [X] What are the genuine scores for each one of them?
+  - - ```python src/python/test.py --image_name image_F1.jpg```
+    - Image 'image_F1.jpg' is Fake Face. Score: 0.46.
+    - Prediction cost 0.07 s
+  - ```python src/python/test.py --image_name image_F2.jpg```
+    - Image 'image_F2.jpg' is Fake Face. Score: 0.50.
+    - Prediction cost 0.07 s
+  - ```python src/python/test.py --image_name image_T1.jpg```
+    - Image 'image_T1.jpg' is Real Face. Score: 0.50.
+    - Prediction cost 0.07 s
+- [X] You will have to reproduce the scores from the previous step later when using TFLite.
 
 ### 4. Converting the model to TFLite
 
