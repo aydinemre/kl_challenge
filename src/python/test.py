@@ -9,6 +9,7 @@ import argparse
 import os
 import time
 import warnings
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -33,7 +34,7 @@ def check_image(image):
         return True
 
 
-def test(image_name, model_dir, device_id):
+def test(image_name, model_path, device_id):
     model_test = AntiSpoofPredict(device_id)
     image_cropper = CropImage()
     image = cv2.imread(SAMPLE_IMAGE_PATH + image_name)
@@ -44,23 +45,22 @@ def test(image_name, model_dir, device_id):
     prediction = np.zeros((1, 3))
     test_speed = 0
     # sum the prediction from single model's result
-    for model_name in os.listdir(model_dir):
-        h_input, w_input, model_type, scale = parse_model_name(model_name)
-        param = {
-            "org_img": image,
-            "bbox": image_bbox,
-            "scale": scale,
-            "out_w": w_input,
-            "out_h": h_input,
-            "crop": True,
-        }
-        if scale is None:
-            param["crop"] = False
-        img = image_cropper.crop(**param)
-        start = time.time()
-        prediction += model_test.predict(img,
-                                         os.path.join(model_dir, model_name))
-        test_speed += time.time()-start
+    model_name = Path(model_path).name
+    h_input, w_input, _, scale = parse_model_name(model_name)
+    param = {
+        "org_img": image,
+        "bbox": image_bbox,
+        "scale": scale,
+        "out_w": w_input,
+        "out_h": h_input,
+        "crop": True,
+    }
+    if scale is None:
+        param["crop"] = False
+    img = image_cropper.crop(**param)
+    start = time.time()
+    prediction += model_test.predict(img, model_path)
+    test_speed += time.time()-start
 
     # draw result of prediction
     label = np.argmax(prediction)
@@ -99,9 +99,9 @@ if __name__ == "__main__":
         default=0,
         help="which gpu id, [0/1/2/3]")
     parser.add_argument(
-        "--model_dir",
+        "--model_path",
         type=str,
-        default="./assets/models/anti_spoof_models",
+        default="./assets/models/anti_spoof_models/2.7_80x80_MiniFASNetV2.pth",
         help="model_lib used to test")
     parser.add_argument(
         "--image_name",
@@ -109,4 +109,4 @@ if __name__ == "__main__":
         default="image_F1.jpg",
         help="image used to test")
     args = parser.parse_args()
-    test(args.image_name, args.model_dir, args.device_id)
+    test(args.image_name, args.model_path, args.device_id)

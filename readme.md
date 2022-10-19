@@ -47,7 +47,7 @@ Whenever you find a question, it should be answered in place. All questions are 
 
 ### 3. Testing Silent-Face-Anti-Spoofing
 
-- Modify the `test.py` script to only use the `2.7_80x80_MiniFASNetV2.pth` model.
+- [X] Modify the `test.py` script to only use the `2.7_80x80_MiniFASNetV2.pth` model.
 - Modify the `test.py` script to output only the genuine score.
 - Run the `test.py` script for `image_F1.jpg`, `image_F2.jpg` and `image_T1.jpg` images.
 - What are the genuine scores for each one of them?
